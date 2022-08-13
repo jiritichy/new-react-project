@@ -1,5 +1,5 @@
-import "./ExpenseItem.css"
-import "./ExpenseDate.css"
+import "./expenseItem.css"
+
 import ExpenseDate from "./ExpenseDate";
 
 const ExpenseItem = (props) => {
