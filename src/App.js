@@ -11,12 +11,8 @@ function App() {
   ]
 
   return (
-    <>
-      <div className='expenses'>
-        <Expenses expenses={expenses} />
-      </div>
 
-    </>
+    <Expenses expenses={expenses} />
 
   );
 }
