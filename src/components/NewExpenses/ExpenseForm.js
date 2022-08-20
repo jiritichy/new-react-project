@@ -3,20 +3,41 @@ import "./ExpenseForm.css"
 
 function ExpenseForm() {
 
-    const [title, setTitle] = useState('')
-    const [amount, setAmount] = useState('')
-    const [date, setDate] = useState('')
+    const [expense, setExpense] = useState({
+        title: "",
+        amount: "",
+        date: ""
+    })
 
+    console.log(expense);
     const titleHandler = (e) => {
-        setTitle(e.target.value)
+        setExpense((prevState) => {
+            return {
+                ...prevState,
+                title: e.target.value
+            }
+        })
     }
 
     const amountHandler = (e) => {
-        setAmount(e.target.value)
+
+        setExpense((prevState) => {
+            return {
+                ...prevState,
+                amount: e.target.value
+            }
+        })
+
     }
 
+
     const dateHandler = (e) => {
-        setDate(e.target.value)
+        setExpense((prevState) => {
+            return {
+                ...prevState,
+                date: e.target.value
+            }
+        })
     }
 
     return (
@@ -43,5 +64,6 @@ function ExpenseForm() {
 
     )
 }
+
 
 export default ExpenseForm;
