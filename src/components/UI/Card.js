@@ -2,7 +2,7 @@ import "./Card.css";
 
 // container component
 
-function Card(props) {
+const Card = (props) => {
 
     const classes = 'card ' + props.className;
 
