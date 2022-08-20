@@ -1,7 +1,7 @@
 import { useState } from "react"
 import "./ExpenseForm.css"
 
-function ExpenseForm() {
+function ExpenseForm(props) {
 
     const [expense, setExpense] = useState({
         title: "",
@@ -9,7 +9,7 @@ function ExpenseForm() {
         date: ""
     })
 
-    console.log(expense);
+
     const titleHandler = (e) => {
         setExpense((prevState) => {
             return {
@@ -40,21 +40,41 @@ function ExpenseForm() {
         })
     }
 
+    const sumbitHandler = (e) => {
+        e.preventDefault()
+
+        const expenseData = {
+            title: expense.title,
+            amount: expense.amount,
+            date: new Date(expense.date)
+        }
+
+        //function via props for child -> parent comunnication
+        //pointer to the function 
+        props.onSaveExpenseData(expenseData);
+
+        setExpense({
+            title: "",
+            amount: "",
+            date: ""
+        })
+    }
+
     return (
 
-        <form>
+        <form onSubmit={sumbitHandler}>
             <div className="new-expense__controls">
                 <div className="new-expense__control">
                     <label>title</label>
-                    <input type='text' onChange={titleHandler} />
+                    <input type='text' value={expense.title} onChange={titleHandler} />
                 </div>
                 <div className="new-expense__control">
                     <label>amount</label>
-                    <input type='number' min="0.01" step="0.01" onChange={amountHandler} />
+                    <input type='number' value={expense.amount} min="0.01" step="0.01" onChange={amountHandler} />
                 </div>
                 <div className="new-expense__control">
                     <label>Date</label>
-                    <input type='date' min="2020-01-01" onChange={dateHandler} />
+                    <input type='date' value={expense.date} min="2020-01-01" onChange={dateHandler} />
                 </div>
             </div>
             <div className="new-expense__actions">
