@@ -9,7 +9,6 @@ function ExpenseForm(props) {
         date: ""
     })
 
-
     const titleHandler = (e) => {
         setExpense((prevState) => {
             return {
@@ -29,7 +28,6 @@ function ExpenseForm(props) {
         })
 
     }
-
 
     const dateHandler = (e) => {
         setExpense((prevState) => {
@@ -58,16 +56,20 @@ function ExpenseForm(props) {
             amount: "",
             date: ""
         })
+
     }
 
-    return (
+    //if form !== false in state, displays Add New Expense btn
+    //on the click , set form = true in state and displays the inputs
+    //cancel btn sets the state to form
 
+    return (
         <form onSubmit={sumbitHandler}>
             <div className="new-expense__controls">
                 <div className="new-expense__control">
-                    <label>title</label>
+                    <label>title</label >
                     <input type='text' value={expense.title} onChange={titleHandler} />
-                </div>
+                </div >
                 <div className="new-expense__control">
                     <label>amount</label>
                     <input type='number' value={expense.amount} min="0.01" step="0.01" onChange={amountHandler} />
@@ -76,14 +78,14 @@ function ExpenseForm(props) {
                     <label>Date</label>
                     <input type='date' value={expense.date} min="2020-01-01" onChange={dateHandler} />
                 </div>
-            </div>
+            </div >
             <div className="new-expense__actions">
-                <button type="submit">Add</button>
+                <button type="button" onClick={props.formCloseHandler}>Cancel</button>
+                <button type="submit">Add Expense</button>
             </div>
-        </form>
+        </form >
 
     )
 }
-
 
 export default ExpenseForm;
